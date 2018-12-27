@@ -18,7 +18,7 @@
 /datum/antagonist/traitor/on_gain()
 	if(owner.current && isAI(owner.current))
 		traitor_kind = TRAITOR_AI
-	
+
 	SSticker.mode.traitors += owner
 	owner.special_role = special_role
 	if(give_objectives)
@@ -48,7 +48,7 @@
 		A.verbs -= /mob/living/silicon/ai/proc/choose_modules
 		A.malf_picker.remove_malf_verbs(A)
 		qdel(A.malf_picker)
-	
+
 	SSticker.mode.traitors -= owner
 	if(!silent && owner.current)
 		to_chat(owner.current,"<span class='userdanger'> You are no longer the [special_role]! </span>")
@@ -73,7 +73,7 @@
 /datum/antagonist/traitor/proc/forge_human_objectives()
 	var/is_hijacker = FALSE
 	if (GLOB.joined_player_list.len >= 30) // Less murderboning on lowpop thanks
-		is_hijacker = prob(10)
+		is_hijacker = prob(0)
 	var/martyr_chance = prob(20)
 	var/objective_count = is_hijacker 			//Hijacking counts towards number of objectives
 	if(!SSticker.mode.exchange_blue && SSticker.mode.traitors.len >= 8) 	//Set up an exchange if there are enough traitors
